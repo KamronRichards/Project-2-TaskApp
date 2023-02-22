@@ -2,3 +2,44 @@
     ViewData["Title"] = "Add/Edit Task";
 }
 
+<div class="text-center">
+    <h1 class="display-4">Add a Task</h1>
+    <p>Use the form below to add a task:</p>
+
+    <form method="post">
+        <label>Task: </label>
+        <input asp-for="Task" /><br />
+
+        <label>Due Date: </label>
+        <input asp-for="DueDate" /><br />
+
+        <label>Quadrant: </label>
+        <select asp-for="Quadrant">
+            <option value="1">Quadrant 1</option>
+            <option value="2">Quadrant 2</option>
+            <option value="3">Quadrant 3</option>
+            <option value="4">Quadrant 4</option>
+        </select>
+        <br />
+
+        <label>Category: </label>
+        <select asp-for="Category">
+            <option value="Home">Home</option>
+            <option value="School">School</option>
+            <option value="Work">Work</option>
+            <option value="Church">Church</option>
+        </select>
+        <br />
+
+        <label>Completed (Yes/No): </label>
+        <select asp-for="Edited">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <br />
+
+        <!--Display error messages per data validation parameters-->
+        <div asp-validation-summary="All"></div>
+
+    </form>
+</div>
