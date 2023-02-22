@@ -28,6 +28,11 @@ namespace Project_2_TaskApp.Controllers
             return View();
         }
 
+        public IActionResult Quadrants()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
