@@ -1,0 +1,34 @@
+@{
+    ViewData["Title"] = "Quadrants";
+}
+
+
+@model List<ApplicationResponse>
+
+    <table class="table table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <td>Quadrant 1</td>
+                <td>Quadrant 2</td>
+                <td>Quadrant 3</td>
+                <td>Quadrant 4</td>
+            </tr>
+        </thead>
+
+        @*<tbody>
+            @foreach (var x in Model)
+            {
+            <tr>
+                <td>@x.quad1</td>
+                <td>@x.quad2</td>
+                <td>@x.quad3</td>
+                <td>@x.quad4</td>
+
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-entryid="@x.TaskID">Edit</a></td>
+                <td><a asp-controller="Home" asp-action="Delete">Delete</a></td>
+            </tr>
+            }
+        </tbody>*@
+
+    </table>
