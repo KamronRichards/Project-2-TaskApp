@@ -23,6 +23,11 @@ namespace Project_2_TaskApp.Controllers
             return View();
         }
 
+        public IActionResult AddEditTask ()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
