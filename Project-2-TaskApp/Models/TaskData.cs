@@ -15,7 +15,11 @@ namespace Project_2_TaskApp.Models
         public DateTime dueDate { get; set; }
         [Required]
         public string quadrant { get; set; }
-        public string category { get; set; }
         public bool completed { get; set; }
+
+        //Build Forgein Key relationship
+        public int CategoryID { get; set; }
+        public Category category { get; set; }
+
     }
 }
