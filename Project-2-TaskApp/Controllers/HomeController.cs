@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Project_2_TaskApp.Models;
 using System;
@@ -11,13 +12,11 @@ namespace Project_2_TaskApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
         private TaskContext newContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger, TaskContext newTask)
+        public HomeController(TaskContext newTask)
         {
-            _logger = logger;
             newContext = newTask;
         }
 
@@ -26,25 +25,71 @@ namespace Project_2_TaskApp.Controllers
             return View();
         }
 
-        public IActionResult AddEditTask ()
+        [HttpGet]
+        public IActionResult AddEditTask()
         {
+            ViewBag.Categorys = newContext.Categorys.ToList();
+
             return View();
+        }
+        [HttpPost]
+        public IActionResult AddEditTask(TaskData ar)
+        {
+            if (ModelState.IsValid)
+            {
+                newContext.Update(ar);
+                newContext.SaveChanges();
+
+                return RedirectToAction("Quadrants");
+            }
+            else
+            {
+                ViewBag.Categorys = newContext.Categorys.ToList();
+                return View(ar);
+            }
         }
 
         public IActionResult Quadrants()
         {
-            return View();
+            var tasks = newContext.Tasks.Include(x => x.Category).Where(x => x.Edited == false).ToList();
+
+            return View(tasks);
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult Edit(int taskid)
         {
-            return View();
+            ViewBag.Categorys = newContext.Categorys.ToList();
+
+            var task = newContext.Tasks.Single(x => x.taskId == taskid);
+
+            return View("AddEditTask", task);
+        }
+        [HttpPost]
+        public IActionResult Edit(TaskData blah)
+        {
+            newContext.Update(blah);
+            newContext.SaveChanges();
+
+            return RedirectToAction("AddEditTask");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+
+        [HttpGet]
+        public IActionResult Delete(int taskid)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var task = newContext.Tasks.Single(x => x.taskId == taskid);
+
+
+            return View(task);
         }
+        [HttpPost]
+        public IActionResult Delete(TaskData ar)
+        {
+            newContext.Tasks.Remove(ar);
+            newContext.SaveChanges();
+            return RedirectToAction("AddEditTask");
+        }
+
     }
 }
