@@ -13,9 +13,12 @@ namespace Project_2_TaskApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private TaskContext newContext { get; set; }
+
+        public HomeController(ILogger<HomeController> logger, TaskContext newTask)
         {
             _logger = logger;
+            newContext = newTask;
         }
 
         public IActionResult Index()
