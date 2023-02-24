@@ -4,7 +4,7 @@
 
 @model List<TaskData>
 
-<table class="table table-bordered table-striped">
+@*<table class="table table-bordered table-striped">
 
     <thead>
         <tr>
@@ -67,4 +67,32 @@
 
 
 
-    </table>
+    </table>*@
+
+<table class="table table-bordered table-striped">
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Category</td>
+            <td>Due Date</td>
+            <td>Quadrant</td>
+            <td>Task</td>
+            <td>Completed</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.category.CategoryName</td>
+                <td>@x.dueDate</td>
+                <td>@x.quadrant</td>
+                <td>@x.taskName</td>
+                <td>@x.completed</td>
+
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.taskId">Edit</a></td>
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.taskId">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
