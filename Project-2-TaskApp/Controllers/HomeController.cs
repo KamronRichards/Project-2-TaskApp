@@ -51,7 +51,7 @@ namespace Project_2_TaskApp.Controllers
 
         public IActionResult Quadrants()
         {
-            var tasks = newContext.Tasks.Include(x => x.Category).Where(x => x.Edited == false).ToList();
+            var tasks = newContext.Tasks.Include(x => x.category).Where(x => x.completed == false).ToList();
 
             return View(tasks);
         }
