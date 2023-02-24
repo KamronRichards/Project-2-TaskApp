@@ -71,7 +71,7 @@ namespace Project_2_TaskApp.Controllers
             newContext.Update(blah);
             newContext.SaveChanges();
 
-            return RedirectToAction("AddEditTask");
+            return RedirectToAction("Quadrants");
         }
 
 
@@ -88,7 +88,7 @@ namespace Project_2_TaskApp.Controllers
         {
             newContext.Tasks.Remove(ar);
             newContext.SaveChanges();
-            return RedirectToAction("AddEditTask");
+            return RedirectToAction("Quadrants");
         }
 
     }

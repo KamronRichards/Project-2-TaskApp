@@ -36,7 +36,7 @@ namespace Project_2_TaskApp.Models
                         taskId = 1,
                         taskName = "Homework",
                         dueDate = DateTime.Today,
-                        quadrant = "Urgent, Important",
+                        quadrant = 2,
                         CategoryID = 1,
                         completed = false
                     },
@@ -45,7 +45,7 @@ namespace Project_2_TaskApp.Models
                         taskId = 2,
                         taskName = "Job Stuff",
                         dueDate = DateTime.Today,
-                        quadrant = "Not Urgent, Important",
+                        quadrant = 3,
                         CategoryID = 2,
                         completed = true
                     }

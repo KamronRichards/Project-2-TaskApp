@@ -14,7 +14,7 @@ namespace Project_2_TaskApp.Models
         public string taskName { get; set; }
         public DateTime dueDate { get; set; }
         [Required]
-        public string quadrant { get; set; }
+        public int? quadrant { get; set; }
         public bool completed { get; set; }
 
         //Build Forgein Key relationship
